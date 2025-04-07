@@ -25,10 +25,10 @@ const UpdateBookForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(
-        `/books/${book.id}`,
-        formData
-      );
+      //await axios.put(
+      //  `/books/${book.id}`,
+      //  formData
+      //);
       alert("Book updated successfully!");
       navigate("/books"); // Redirect back to the books list
     } catch (error) {

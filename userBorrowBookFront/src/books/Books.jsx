@@ -10,7 +10,8 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../middleware/api";
+//import axios from "../middleware/api";
+import BookService from "../middleware/bookService";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -19,7 +20,8 @@ const Books = () => {
   // Fetch all books
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("/books");
+      //const response = await axios.get("/books");
+      const response = await BookService.getAllBooks();
       setBooks(response.data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -29,7 +31,8 @@ const Books = () => {
   // Delete a book by ID
   const deleteBook = async (id) => {
     try {
-      await axios.delete(`/books/${id}`);
+      //await axios.delete(`/books/${id}`);
+      BookService.deleteBook(id);
       setBooks(books.filter((book) => book.id !== id));
       alert("Book deleted successfully");
       navigate("/books");
