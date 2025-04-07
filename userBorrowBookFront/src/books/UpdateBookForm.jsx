@@ -2,6 +2,7 @@ import { Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../middleware/api";
+import BookService from "../middleware/bookService";
 
 const UpdateBookForm = () => {
   const location = useLocation();
@@ -29,6 +30,7 @@ const UpdateBookForm = () => {
       //  `/books/${book.id}`,
       //  formData
       //);
+      await BookService.updateBook(book.id, formData)
       alert("Book updated successfully!");
       navigate("/books"); // Redirect back to the books list
     } catch (error) {

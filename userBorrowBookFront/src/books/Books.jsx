@@ -22,7 +22,8 @@ const Books = () => {
     try {
       //const response = await axios.get("/books");
       const response = await BookService.getAllBooks();
-      setBooks(response.data);
+      console.log(response)
+      setBooks(response);
     } catch (error) {
       console.error("Error fetching books:", error);
     }
@@ -32,7 +33,7 @@ const Books = () => {
   const deleteBook = async (id) => {
     try {
       //await axios.delete(`/books/${id}`);
-      BookService.deleteBook(id);
+      await BookService.deleteBook(id);
       setBooks(books.filter((book) => book.id !== id));
       alert("Book deleted successfully");
       navigate("/books");

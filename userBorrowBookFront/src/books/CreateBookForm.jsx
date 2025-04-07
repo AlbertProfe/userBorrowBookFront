@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../middleware/api";
 import { TextField, Button, Paper } from "@mui/material";
+import BookService from "../middleware/bookService";
 
 const CreateBookForm = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const CreateBookForm = () => {
     e.preventDefault();
     try {
       //await axios.post("/books", formData);
+      await BookService.createBook(formData);
       alert("Book created successfully!");
       navigate("/"); // Redirect back to the books list
     } catch (error) {
